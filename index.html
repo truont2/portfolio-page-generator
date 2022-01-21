@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        header {
+            background: lightslategray;
+        }
+    </style>
+
+    <header>
+        <h1>Hi! My name is ${response.name}</h1>
+        <p>I am from ${response.location}</p>
+        <h2>${response.contact}<button id="contactBtn">Contact me</button></h2>
+    </header>
+    
+
+    <main>
+        <ul>
+            <li>Github Username: ${response.github}</li>
+            <li>LinkedIn link: <a href="${response.Linklink}"></a>Hello</li>
+        </ul>
+    </main>
+
+    <script>
+        const contactBtn = document.querySelector("#contactBtn");
+        
+        contactBtn.addEventListener("click", function() {
+            wwindow.location = "${response.Linklink}";
+        });
+
+    </script>
+</body>
+</html>
