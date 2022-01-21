@@ -10,30 +10,105 @@
     <style>
         header {
             background: lightslategray;
+            text-align: center;
         }
+
+        li {
+            padding: 5px;
+            width: 100%;
+            border: 1px solid black;
+            box-shadow: 0 2px 2px grey;
+        }
+
+        #contactBtn {
+            padding: 10px; 
+            background: lightsteelblue;
+        }
+
+        ul {
+            list-style: none;
+        }
+        img {
+            width: 100%;
+            margin: 20px auto;
+        }
+
     </style>
 
     <header>
         <h1>Hi! My name is ${response.name}</h1>
         <p>I am from ${response.location}</p>
-        <h2>${response.contact}<button id="contactBtn">Contact me</button></h2>
+        <h2>${response.contact} <button id="contactBtn">Contact me</button></h2>
     </header>
     
 
     <main>
+        <div class='console-container'><span id='text'></span><div class='console-underscore' id='console'>&#95;</div></div>
         <ul>
             <li>Github Username: ${response.github}</li>
-            <li>LinkedIn link: <a href="${response.Linklink}"></a>Hello</li>
+            <li>Github Link: <a href="https://github.com/${response.github}">Link</a></li>
+            <li>LinkedIn link: <a href="https://www.linkedin.com/in/${response.Linklink}/">${response.linkName}</a></li>
         </ul>
+        <img src="./javascript-fullstack.730958a2.jpg" alt="full stack developer">
     </main>
 
     <script>
         const contactBtn = document.querySelector("#contactBtn");
         
         contactBtn.addEventListener("click", function() {
-            wwindow.location = "${response.Linklink}";
+            window.location = "${response.Linklink}";
         });
 
+        consoleText(['Hello World.', 'Console Text', 'Made with Love.'], 'text',['tomato','rebeccapurple','lightblue']);
+
+function consoleText(words, id, colors) {
+  if (colors === undefined) colors = ['#fff'];
+  var visible = true;
+  var con = document.getElementById('console');
+  var letterCount = 1;
+  var x = 1;
+  var waiting = false;
+  var target = document.getElementById(id)
+  target.setAttribute('style', 'color:' + colors[0])
+  window.setInterval(function() {
+
+    if (letterCount === 0 && waiting === false) {
+      waiting = true;
+      target.innerHTML = words[0].substring(0, letterCount)
+      window.setTimeout(function() {
+        var usedColor = colors.shift();
+        colors.push(usedColor);
+        var usedWord = words.shift();
+        words.push(usedWord);
+        x = 1;
+        target.setAttribute('style', 'color:' + colors[0])
+        letterCount += x;
+        waiting = false;
+      }, 1000)
+    } else if (letterCount === words[0].length + 1 && waiting === false) {
+      waiting = true;
+      window.setTimeout(function() {
+        x = -1;
+        letterCount += x;
+        waiting = false;
+      }, 1000)
+    } else if (waiting === false) {
+      target.innerHTML = words[0].substring(0, letterCount)
+      letterCount += x;
+    }
+  }, 120)
+  window.setInterval(function() {
+    if (visible === true) {
+      con.className = 'console-underscore hidden'
+      visible = false;
+
+    } else {
+      con.className = 'console-underscore'
+
+      visible = true;
+    }
+  }, 400)
+}
     </script>
 </body>
 </html>

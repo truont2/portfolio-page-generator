@@ -1,56 +1,4 @@
-const fs = require('fs');
-const inquirer = require('inquirer');
-
-
-inquirer
-    .prompt([
-        {
-            type: 'input',
-            message: "What is your name?",
-            name: 'name'
-        },
-
-        {
-            type: 'input',
-            message: 'Where are you from?',
-            name: 'location'
-        },
-
-        {
-            type: 'input',
-            message: 'What do you want for a contact heading?',
-            name: 'contact'
-        },
-
-        {
-            type: 'input',
-            message: 'What is your Github username?',
-            name: 'github'
-        },
-
-        {
-            type: 'input',
-            message: 'what is your linkedin link',
-            name: 'Linklink'
-        },
-
-        {
-            type: 'input',
-            message: 'What is your Linkedin username?',
-            name: 'linkName'
-        }
-    ]) .then(response => {
-        const obj = JSON.stringify(response,null,4);
-        // for(key in response) {
-        //     fs.appendFile(`${response.name}.txt`, `${response[`${key}`]}\n`, (error) => {
-        //         if(error) {
-        //             throw error;
-        
-        //         }
-        //     });
-        // } 
-
-        const htmlTxt = `<!DOCTYPE html>
+<!DOCTYPE html>
         <html lang="en">
         <head>
             <meta charset="UTF-8">
@@ -88,18 +36,18 @@ inquirer
             </style>
         
             <header>
-                <h1>Hi! My name is ${response.name}</h1>
-                <p>I am from ${response.location}</p>
-                <h2>${response.contact} <button id="contactBtn">Contact me</button></h2>
+                <h1>Hi! My name is Takara</h1>
+                <p>I am from Seattle</p>
+                <h2>Welcome <button id="contactBtn">Contact me</button></h2>
             </header>
             
         
             <main>
                 <div class='console-container'><span id='text'></span><div class='console-underscore' id='console'>&#95;</div></div>
                 <ul>
-                    <li>Github Username: ${response.github}</li>
-                    <li>Github Link: <a href="https://github.com/${response.github}">Link</a></li>
-                    <li>LinkedIn link: <a href="https://www.linkedin.com/in/${response.Linklink}/">${response.linkName}</a></li>
+                    <li>Github Username: truont2</li>
+                    <li>Github Link: <a href="https://github.com/truont2">Link</a></li>
+                    <li>LinkedIn link: <a href="https://www.linkedin.com/in/https://www.linkedin.com/in/takaratruong//">takaratruong</a></li>
                 </ul>
                 <img src="./javascript-fullstack.730958a2.jpg" alt="full stack developer">
             </main>
@@ -108,7 +56,7 @@ inquirer
                 const contactBtn = document.querySelector("#contactBtn");
                 
                 contactBtn.addEventListener("click", function() {
-                    window.location = "${response.Linklink}";
+                    window.location = "https://www.linkedin.com/in/takaratruong/";
                 });
         
                 consoleText(['Hello World.', 'Console Text', 'Made with Love.'], 'text',['tomato','rebeccapurple','lightblue']);
@@ -163,11 +111,4 @@ inquirer
         }
             </script>
         </body>
-        </html>`;
-        
-        fs.writeFile(`${response.name}.html`, htmlTxt, (error) => {
-                    if(error) {
-                        throw error;
-                    }
-                });
-    })
+        </html>
