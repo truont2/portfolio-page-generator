@@ -197,3 +197,6 @@ inquirer
                     }
                 });
     })
+
+    // do write file sync 
+    // prompt user()
